@@ -15,7 +15,7 @@ LABEL maintainer "KagChi"
 WORKDIR /app
 
 # Install needed deps
-RUN apk add --no-cache tini
+RUN apk add --no-cache tzdata tini postgresql-client
 
 COPY --from=build-stage /tmp/build/pgsql-backup main
 
