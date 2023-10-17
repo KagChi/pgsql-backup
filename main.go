@@ -33,10 +33,8 @@ func GenerateRandomHex(length int) (string, error) {
 }
 
 func main() {
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Error loading .env file")
-	}
+	_ = godotenv.Load()
+
 	logger := log.New(os.Stdout, "", log.Ldate|log.Ltime)
 
 	endpoint := os.Getenv("S3_ENDPOINT")
