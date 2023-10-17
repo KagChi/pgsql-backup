@@ -101,7 +101,7 @@ func main() {
 			currentTime := time.Now()
 			year, month, day := currentTime.Date()
 			date := fmt.Sprintf("%d-%02d-%02d", year, month, day)
-			fileName := fmt.Sprintf("Database/%d/%d/%d/%s (%s).zip", year, month, day, date, randHex)
+			fileName := fmt.Sprintf("%s/%d/%d/%d/%s (%s).zip", os.Getenv("FILE_PATH"), year, month, day, date, randHex)
 
 			log.Printf("File name: %s", fileName)
 
@@ -112,6 +112,15 @@ func main() {
 			}
 
 			log.Printf("Uploaded the file to S3")
+
+			retainTime := currentTime.Add(3 * 24 * time.Hour)
+
+			client.PutObjectRetention(context.Background(), os.Getenv("S3_BUCKET"), fileName, minio.PutObjectRetentionOptions{
+				RetainUntilDate: &retainTime,
+				VersionID: fmt.Sprintf("Retain %s after 3 days", fileName),
+			})
+
+			log.Printf("%s will be retained after 3 days", fileName)
 		},
 	)
 
