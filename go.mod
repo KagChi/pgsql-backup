@@ -1,4 +1,5 @@
-module golang-template
+module github.com/kagchi/pgsql-backup
+
 
 go 1.20
 
