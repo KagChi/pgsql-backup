@@ -19,7 +19,7 @@ import (
 )
 
 func GenerateRandomHex(length int) (string, error) {
-	if length%2 != 0 {
+	if length % 2 != 0 {
 		return "", fmt.Errorf("length must be an even number")
 	}
 
