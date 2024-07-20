@@ -4,7 +4,10 @@ go 1.21
 
 toolchain go1.22.5
 
-require github.com/joho/godotenv v1.5.1
+require (
+	github.com/go-co-op/gocron v1.37.0
+	github.com/joho/godotenv v1.5.1
+)
 
 require (
 	github.com/go-ini/ini v1.67.0 // indirect
@@ -13,7 +16,7 @@ require (
 
 require (
 	github.com/dustin/go-humanize v1.0.1 // indirect
-	github.com/go-co-op/gocron v1.37.0
+	github.com/go-co-op/gocron/v2 v2.11.0
 	github.com/google/uuid v1.6.0 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/klauspost/compress v1.17.9 // indirect
